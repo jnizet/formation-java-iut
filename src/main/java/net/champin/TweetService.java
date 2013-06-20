@@ -92,7 +92,13 @@ public class TweetService {
      * @param hashtag the hashtag to look for, with a leading <code>#</code>
      */
     public List<Tweet> extractTweetsWithHashTag(String hashtag) {
-        throw new NotImplementedException();
+        ArrayList<Tweet> tweetsWithHashTag = new ArrayList();
+        for(Tweet tweet: getTweets()) {
+            if (tweet.containsHashTag(hashtag)) {
+                tweetsWithHashTag.add(tweet);
+            }
+        }
+        return tweetsWithHashTag;
     }
 
     /**

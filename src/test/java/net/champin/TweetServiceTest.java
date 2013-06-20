@@ -7,7 +7,7 @@ import com.ninja_squad.formation.Tweet;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.fest.assertions.Assertions.assertThat
+import static org.fest.assertions.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 /**
@@ -50,14 +50,13 @@ public class TweetServiceTest
         assertThat(got).isEqualTo(expected);
     }
 
-    /**
-     * extrait les tweets contenant un hashtag donn\u00e9, en conservant
-     l\u2019ordre
-     */
+    @Test
     public void extractTweetsWithHashTagLambda() {
-        assertThat(service.extractTweetsWithHashTag("#lambda")).onProperty("id")
+        List<Long> expectedIds = Arrays.asList(1L, 2L, 3L, 6L);
+        assertThat(service.extractTweetsWithHashTag("#lambda")).onProperty("id").isEqualTo(expectedIds);
     }
 
+    @Test
     public void extractTweetsWithHashTagAbsent() {
         assertThat(service.extractTweetsWithHashTag("#absent")).isEmpty();
     }
