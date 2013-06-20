@@ -50,13 +50,6 @@ public class TweetServiceTest
         assertThat(got).isEqualTo(expected);
     }
 
-    @Test
-    public void extractTweetsWithHashTagLambda() {
-        List<Long> expectedIds = Arrays.asList(1L, 2L, 3L, 6L);
-        assertThat(service.extractTweetsWithHashTag("#lambda")).onProperty("id").isEqualTo(expectedIds);
-    }
-
-    @Test
     public void extractTweetsWithHashTagAbsent() {
         assertThat(service.extractTweetsWithHashTag("#absent")).isEmpty();
     }
